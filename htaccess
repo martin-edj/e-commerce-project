@@ -1,0 +1,77 @@
+#This Apache config file was created by Duplicator Installer on 2020-09-09 13:42:44.
+#The original can be found in archived file with the name .htaccess__[HASH]
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+# BEGIN HttpHeaders
+# Les directives (lignes) entre « BEGIN HttpHeaders » et « END HttpHeaders » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  <FilesMatch "\.(php|html)$">
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "0"
+    Header set Strict-Transport-Security "max-age=2592000; preload" env=HTTPS
+    Header set Content-Security-Policy "default-src https: data:; script-src https: data:; style-src https: data:; img-src https: data: mediastream:; connect-src https: data:; font-src https: data:; media-src https: data:; require-sri-for script style"
+    Header set Referrer-Policy "no-referrer"
+    Header set Feature-Policy "autoplay 'self'; cookie 'self'; domain 'self'; encrypted-media 'self'; geolocation 'self'; payment 'self'; picture-in-picture 'self'; sync-script 'self'; usb 'self'; vibrate 'self'"
+  </FilesMatch>
+  # Protéger les fichiers .htaccess et .htpasswds
+<Files ~ "^.*\.([Hh][Tt][AaPp])">
+order allow,deny
+deny from all
+satisfy all
+</Files>
+# Protéger le fichier wp-config.php
+<files wp-config.php>
+order allow,deny
+deny from all
+</files>
+# Désactiver le hotlinking de vos images
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?martin-cesi-e-commerce.go.yj.fr [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?csagmetz57.fr [NC]
+RewriteRule \.(jpg|jpeg|png|gif)$ http://fakeimg.pl/400x200/?text=Pas_touche_aux_images [NC,R,L]
+# Désactiver le hotlinking de vos images
+</IfModule>
+# END HttpHeaders
+# BEGIN HttpHeadersAuth
+# Les directives (lignes) entre « BEGIN HttpHeadersAuth » et « END HttpHeadersAuth » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END HttpHeadersAuth
+# BEGIN HttpHeadersCompression
+# Les directives (lignes) entre « BEGIN HttpHeadersCompression » et « END HttpHeadersCompression » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END HttpHeadersCompression
+# BEGIN HttpHeadersContentType
+# Les directives (lignes) entre « BEGIN HttpHeadersContentType » et « END HttpHeadersContentType » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END HttpHeadersContentType
+# BEGIN HttpHeadersExpires
+# Les directives (lignes) entre « BEGIN HttpHeadersExpires » et « END HttpHeadersExpires » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END HttpHeadersExpires
+# BEGIN HttpHeadersCookieSecurity
+# Les directives (lignes) entre « BEGIN HttpHeadersCookieSecurity » et « END HttpHeadersCookieSecurity » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END HttpHeadersCookieSecurity
+# BEGIN HttpHeadersTiming
+# Les directives (lignes) entre « BEGIN HttpHeadersTiming » et « END HttpHeadersTiming » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
+# END HttpHeadersTiming
